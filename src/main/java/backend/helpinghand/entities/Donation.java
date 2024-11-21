@@ -1,5 +1,6 @@
 package backend.helpinghand.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,17 +23,17 @@ public class Donation {
     @OneToOne(mappedBy = "donation", fetch = FetchType.EAGER)
     private DonationStatus donationStatus;
 
-
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "paymentCard")
     private Payment donationPayment;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "donor_id")
     private Donor donor;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name ="campaign_id")
     private Campaign campaign;

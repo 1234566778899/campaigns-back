@@ -61,12 +61,13 @@ public class SecurityConfiguration {
 
 
         //Permisos para las rutas
-        http.authorizeHttpRequests( auth-> auth
-                .requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers(HttpMethod.POST,"/helpinghands/**").hasAnyAuthority("REGISTRO")
-                .requestMatchers(HttpMethod.DELETE,"/helpinghands/**").hasAnyAuthority("REGISTRO")
-                .requestMatchers(HttpMethod.PUT,"/helpinghands/**").hasAnyAuthority("REGISTRO")
-                .requestMatchers(HttpMethod.GET,"/helpinghands/**").hasAnyAuthority("CONSULTA")
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(HttpMethod.POST, "/helpinghands/users/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "/helpinghands/users/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/helpinghands/**").hasAnyAuthority("CONSULTA")
+                .requestMatchers(HttpMethod.POST, "/helpinghands/**").hasAnyAuthority("REGISTRO")
+                .requestMatchers(HttpMethod.PUT, "/helpinghands/**").hasAnyAuthority("REGISTRO")
+                .requestMatchers(HttpMethod.DELETE, "/helpinghands/**").hasAnyAuthority("REGISTRO")
                 .anyRequest().authenticated()
         );
 

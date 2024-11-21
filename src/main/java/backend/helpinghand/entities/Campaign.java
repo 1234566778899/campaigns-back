@@ -30,10 +30,10 @@ public class Campaign {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "campaign", fetch = FetchType.EAGER)
     private List<Comment> comments;
-    
+    @JsonIgnore
     @OneToMany(mappedBy = "campaign", fetch = FetchType.EAGER)
     private List<Donation> donations;
 }
