@@ -22,7 +22,6 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "donor_id")
     private Donor donor;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "campaign_id")
     private Campaign campaign;

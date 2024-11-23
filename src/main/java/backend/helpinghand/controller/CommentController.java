@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/helpinghands")
-@CrossOrigin("*")
+@RequestMapping(path = "/helpinghands")
+@CrossOrigin("http://localhost:4200")
 public class CommentController {
     @Autowired
     private CommentService commentService;
@@ -34,7 +34,7 @@ public class CommentController {
         return new ResponseEntity<>(commentService.listCommentsByProfileId(profileId),HttpStatus.OK);
     }
 
-    @GetMapping("/comments/campaigns/{campaign_id}")
+    @GetMapping("/comments/campaign/{campaign_id}")
     public ResponseEntity<List<Comment>> listCommentsByCampaignId(@PathVariable ("campaign_id") Long id){
         return new ResponseEntity<>(commentService.listCommentsByCampaignId(id),HttpStatus.OK);
     }
